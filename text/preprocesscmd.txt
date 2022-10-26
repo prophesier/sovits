@@ -1,0 +1,54 @@
+python preprocess.py --text_index 1 --filelists filelists/aishell3_sid_text_test.txt filelists/aishell3_sid_text_train.txt --text_cleaners chinese_cleaners
+#train
+# LJ Speech
+python train.py -c configs/ljs_base.json -m ljs_base
+
+# VCTK
+python train_ms.py -c configs/vctk_base.json -m vctk_base
+
+# aishell3
+python train_ms.py -c configs/aishell_base.json -m aishell_base
+
+# aishell3_encode
+python train_ms.py -c configs/aishell_encode.json -m aishell_encode
+
+!/opt/bin/nvidia-smi
+
+!ln -s ../datasets/aishell3 DUMMY3
+
+%cd monotonic_align
+!python setup.py build_ext --inplace
+
+=============================================================================================
+python aishellencode.py soft G:\Dataset\AISHELL-3\test\wav\SSB0005 G:\Dataset\AISHELL-3\testencode\wav\SSB0005
+
+!apt-get install libsndfile1 -y
+
+
+
+
+
+
+
+
+
+
+
+
+
+function getElementByXpath(path) {
+       return document.evaluate(path, document, null, 
+       XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+  }
+ 
+function reconnect(){
+	  console.log('working')
+	  getElementByXpath("//div[@id='top-toolbar']/colab-connect-button").click()
+}
+var a = setInterval(reconnect, 1*60*1000);
+function stop(){
+	 clearInterval(a)
+}
+function start(){
+	 a = setInterval(reconnect, 1*60*1000);
+}
